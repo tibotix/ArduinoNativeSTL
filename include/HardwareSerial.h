@@ -6,6 +6,12 @@
 #include "Stream.h"
 #include "esp32-hal.h"
 
+#ifndef HARDWARE_SERIAL_OFSTREAM
+#include <iostream>
+#define HARDWARE_SERIAL_OFSTREAM std::cout
+#endif
+
+
 class HardwareSerial: public Stream
 {
 public:

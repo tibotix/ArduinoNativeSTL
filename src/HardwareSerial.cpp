@@ -97,7 +97,7 @@ size_t HardwareSerial::read(uint8_t *buffer, size_t size)
 
 void HardwareSerial::flush(void)
 {
-    ASSERT_NOT_REACHED("flush");
+    HARDWARE_SERIAL_OFSTREAM.flush();
 }
 
 void HardwareSerial::flush(bool txOnly)
@@ -107,13 +107,14 @@ void HardwareSerial::flush(bool txOnly)
 
 size_t HardwareSerial::write(uint8_t c)
 {
-    ASSERT_NOT_REACHED("write");
+    HARDWARE_SERIAL_OFSTREAM << c;
+    // TODO: maybe pass ofstream instance where to write
     return 1;
 }
 
 size_t HardwareSerial::write(const uint8_t *buffer, size_t size)
 {
-    ASSERT_NOT_REACHED("write");
+    HARDWARE_SERIAL_OFSTREAM << buffer;
     return size;
 }
 
